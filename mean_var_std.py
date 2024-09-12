@@ -1,35 +1,18 @@
 import numpy as np
 
 def calculate(list):
-    if len(list) != 9:
-        raise ValueError('List must contain nine numbers.')
-    else:
-        matrix = np.array(list).reshape(3, 3)
+ if len(list) != 9:
+    raise ValueError("List must contain nine numbers.")
+ else:
+  array = np.array(list).reshape((3,3))
+  calculations ={
+     'mean': [np.mean(array,axis=0).tolist(),np.mean(array,axis=1).tolist(),np.mean(array)],
+     'variance': [np.var(array,axis=0).tolist(),np.var(array,axis=1).tolist(),np.var(array)],
+     'standard deviation': [np.std(array,axis=0).tolist(),np.std(array,axis=1).tolist(),np.std(array)],
+     'max': [np.max(array,axis=0).tolist(),np.max(array,axis=1).tolist(),np.max(array)],
+     'min': [np.min(array,axis=0).tolist(),np.min(array,axis=1).tolist(),np.min(array)],
+     'sum': [np.sum(array,axis=0).tolist(),np.sum(array,axis=1).tolist(),np.sum(array)]
+     }
+  return calculations
 
-    mean = [(matrix.mean(axis=0).tolist()), (matrix.mean(axis=1).tolist()),
-            (matrix.flatten().mean())]
-
-    var = [(matrix.var(axis=0).tolist()), (matrix.var(axis=1).tolist()),
-           (matrix.flatten().var())]
-
-    std = [(matrix.std(axis=0).tolist()), (matrix.std(axis=1).tolist()),
-           (matrix.flatten().std())]
-
-    max = [(matrix.max(axis=0).tolist()), (matrix.max(axis=1).tolist()),
-           (matrix.flatten().max())]
-
-    min = [(matrix.min(axis=0).tolist()), (matrix.min(axis=1).tolist()),
-           (matrix.flatten().min())]
-
-    sum = [(matrix.sum(axis=0).tolist()), (matrix.sum(axis=1).tolist()),
-           (matrix.flatten().sum())]
-
-    calculations = {
-        "mean": mean,
-        "variance": var,
-        "standard deviation": std,
-        "max": max,
-        "min": min,
-        "sum": sum,
-    }
-    return calculations
+calculate([0,1,2,3,4,5,6,7,8])
